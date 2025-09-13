@@ -9,12 +9,12 @@ Sikkaa is a modern, local-first expense tracking application built with **Kotlin
 ## 🚀 Features
 
 ### Core Features (MVP)
-- ✅ **Manual Expense Entry** - Add, edit, and delete expenses instantly - in progress
-- ✅ **Smart Categorization** - Pre-defined categories with custom icons - pending
-- ✅ **Monthly Budget Tracking** - Set and monitor spending limits - pending
-- ✅ **Offline-First** - Works without internet connectivity - pending
-- ✅ **Local Data Storage** - All data stored securely on device - pending
-- ✅ **Cross-Platform** - Native performance on Android, iOS, Desktop - pending
+- ✅ **Manual Expense Entry** - Add, edit, and delete expenses instantly - **in progress**
+- ✅ **Smart Categorization** - Pre-defined categories with custom icons - **pending**
+- ✅ **Monthly Budget Tracking** - Set and monitor spending limits - **pending**
+- ✅ **Offline-First** - Works without internet connectivity - **pending**
+- ✅ **Local Data Storage** - All data stored securely on device - **pending**
+- ✅ **Cross-Platform** - Native performance on Android, iOS, Desktop - **pending**
 
 ### Planned Features (Phase 2+)
 - 🔄 **Receipt Scanning** - OCR-powered automatic expense capture
