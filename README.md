@@ -1,5 +1,39 @@
 This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop (JVM), Server.
 
+# 🪙
+# Sikkaa
+> Next-Level AI-Powered Expense Tracking App
+
+Sikkaa is a modern, local-first expense tracking application built with **Kotlin Multiplatform** and **Compose Multiplatform**, designed to help users manage their expenses intelligently across Android, iOS, and Desktop platforms.
+
+## 🚀 Features
+
+### Core Features (MVP)
+- ✅ **Manual Expense Entry** - Add, edit, and delete expenses instantly
+- ✅ **Smart Categorization** - Pre-defined categories with custom icons
+- ✅ **Monthly Budget Tracking** - Set and monitor spending limits
+- ✅ **Offline-First** - Works without internet connectivity
+- ✅ **Local Data Storage** - All data stored securely on device
+- ✅ **Cross-Platform** - Native performance on Android, iOS, Desktop
+
+### Planned Features (Phase 2+)
+- 🔄 **Receipt Scanning** - OCR-powered automatic expense capture
+- 🤖 **AI Insights** - Monthly spending analysis and recommendations
+- ☁️ **Cloud Sync** - Multi-device synchronization
+- 📊 **Advanced Analytics** - Spending trends and predictions
+- 💱 **Multi-Currency** - International transaction support
+
+## 🏗️ Architecture
+
+### Tech Stack
+- **Frontend**: Compose Multiplatform
+- **Database**: SQLDelight with SQLite
+- **Architecture**: MVVM Pattern
+- **DI**: Koin
+- **Language**: Kotlin 100%
+
+### Project Structure
+
 * [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
   - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
