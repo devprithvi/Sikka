@@ -1,0 +1,26 @@
+import kotlin.Boolean;
+
+CREATE TABLE Expense (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    amount REAL NOT NULL,
+    categoryId TEXT,
+    description TEXT NOT NULL,
+    date INTEGER NOT NULL,
+    createdAt INTEGER NOT NULL
+);
+
+insertExpense:
+INSERT INTO Expense(amount, categoryId, description, date, createdAt)
+VALUES(?, ?, ?, ?, ?);
+
+removeAllExpenses:
+DELETE FROM Expense;
+
+selectAllExpenses:
+SELECT * FROM Expense ORDER BY date DESC;
+
+selectExpenseById:
+SELECT * FROM Expense WHERE id = ?;
+
+deleteExpenseById:
+DELETE FROM Expense WHERE id = ?;
