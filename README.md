@@ -1,7 +1,7 @@
 This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop (JVM), Server.
 
 # 🪙
-# Sikkaa
+# Sikka
 > Next-Level AI-Powered Expense Tracking App
 
 Sikkaa is a modern, local-first expense tracking application built with **Kotlin Multiplatform** and **Compose Multiplatform**, designed to help users manage their expenses intelligently across Android, iOS, and Desktop platforms.
