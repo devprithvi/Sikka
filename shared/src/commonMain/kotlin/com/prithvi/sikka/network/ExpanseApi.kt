@@ -30,21 +30,21 @@ class ExpanseApi {
                 amount = 100.0,
                 categoryId = "food",
                 description = "Lunch",
-                date = "2024-06-01"
+                date = 78889
             ),
             ExpenseEntity(
                 id = 2,
                 amount = 200.0,
                 categoryId = "food",
                 description = "Lunch",
-                date = "2024-06-01"
+                date = 778889
             ),
             ExpenseEntity(
                 id = 3,
                 amount = 300.0,
                 categoryId = "food",
                 description = "Lunch",
-                date = "2024-06-01"
+                date = 778899
             ),
 
         )

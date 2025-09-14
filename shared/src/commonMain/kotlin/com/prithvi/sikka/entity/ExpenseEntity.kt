@@ -2,7 +2,6 @@ package com.prithvi.sikka.entity
 
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -20,12 +19,10 @@ data class ExpenseEntity @OptIn(ExperimentalTime::class) constructor(
     @SerialName("description")
     val description: String,
     @SerialName("date")
-    val date: String,
+    val date: Long,
     @SerialName("createdAt")
     val createdAt: Long = Clock.System.now().toEpochMilliseconds()
 ) {
-    var expanseDate = Instant.parse(date).toLocalDateTime(TimeZone.UTC).date
-
+    val dateTime = Instant.fromEpochMilliseconds(date).toLocalDateTime(TimeZone.UTC)
 }
-
 

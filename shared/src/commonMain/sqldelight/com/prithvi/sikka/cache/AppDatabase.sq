@@ -1,5 +1,3 @@
-import kotlin.Boolean;
-
 CREATE TABLE Expense (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     amount REAL NOT NULL,
@@ -19,8 +17,14 @@ DELETE FROM Expense;
 selectAllExpenses:
 SELECT * FROM Expense ORDER BY date DESC;
 
+-- Delete single expense by ID
+deleteExpenseById:
+DELETE FROM Expense WHERE id = ?;
+
 selectExpenseById:
 SELECT * FROM Expense WHERE id = ?;
 
-deleteExpenseById:
-DELETE FROM Expense WHERE id = ?;
+updateExpense:
+UPDATE Expense
+SET amount = ?, categoryId = ?, description = ?, date = ?, createdAt = ?
+WHERE id = ?;
