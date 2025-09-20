@@ -24,6 +24,7 @@ Sikkaa is a modern, local-first expense tracking application built with **Kotlin
 - 💱 **Multi-Currency** - International transaction support
 
 ## 🏗️ Architecture
+![img.png](img.png)
 
 ### Tech Stack
 - **Frontend**: Compose Multiplatform

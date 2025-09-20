@@ -11,6 +11,7 @@ internal class Database(databaseDriverFactory: DatabaseDriverFactory) {
     private val database = AppDatabase(databaseDriverFactory.createDriver())
     private val dbQuery = database.appDatabaseQueries
 
+
     internal fun getAllExpanses(): List<ExpenseEntity> {
         return dbQuery.selectAllExpenses().executeAsList().map { expense ->
             ExpenseEntity(

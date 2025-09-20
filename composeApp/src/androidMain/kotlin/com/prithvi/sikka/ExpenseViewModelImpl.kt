@@ -1,23 +1,28 @@
 package com.prithvi.sikka
 
+import com.prithvi.sikka.viewmodel.ExpenseScreenState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.prithvi.sikka.entity.ExpenseEntity
+import com.prithvi.sikka.viewmodel.ExpenseViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 
-class ExpanseViewModel(private val sdk: SikkaSDK) : ViewModel() {
-    private val _state = mutableStateOf(ExpenseScreenState())
-    val state: State<ExpenseScreenState> = _state
+class ExpanseViewModelImp(private val sdk: SikkaSDK) : ViewModel(), ExpenseViewModel {
+
+    private val _state = MutableStateFlow(ExpenseScreenState())
+    override val stateI: StateFlow<ExpenseScreenState> = _state
 
     init {
-        loadExpenses()
+        loadExpensesI()
     }
 
-    fun loadExpenses() {
+    override fun loadExpensesI() {
         viewModelScope.launch {
             _state.value = _state.value.copy(isLoading = true)
             try {
@@ -35,11 +40,13 @@ class ExpanseViewModel(private val sdk: SikkaSDK) : ViewModel() {
             }
         }
     }
-    fun updateExpense(expense: ExpenseEntity) {
+
+
+    override fun updateExpense(expense: ExpenseEntity) {
         viewModelScope.launch {
             try {
                 sdk.updateExpense(expense)
-                loadExpenses() // Refresh list
+                loadExpensesI() // Refresh list
             } catch (e: Exception) {
                 _state.value = _state.value.copy(
                     error = "Failed to update expense: ${e.message}"
@@ -51,11 +58,11 @@ class ExpanseViewModel(private val sdk: SikkaSDK) : ViewModel() {
     /**
      * Delete a single expense
      */
-    fun deleteExpense(expenseId: Int) {
+    override fun deleteExpenseI(expenseId: Int) {
         viewModelScope.launch {
             try {
                 sdk.deleteExpense(expenseId)
-                loadExpenses() // Refresh the list
+                loadExpensesI() // Refresh the list
                 // Optional: Show success message
             } catch (e: Exception) {
                 _state.value = _state.value.copy(
@@ -68,11 +75,11 @@ class ExpanseViewModel(private val sdk: SikkaSDK) : ViewModel() {
     /**
      * Delete all expenses (with confirmation)
      */
-    fun deleteAllExpenses() {
+    override fun deleteAllExpensesI() {
         viewModelScope.launch {
             try {
                 sdk.deleteAllExpenses()
-                loadExpenses() // Refresh the list
+                loadExpensesI() // Refresh the list
                 // Optional: Show success message
             } catch (e: Exception) {
                 _state.value = _state.value.copy(
@@ -85,11 +92,11 @@ class ExpanseViewModel(private val sdk: SikkaSDK) : ViewModel() {
     /**
      * Delete multiple expenses
      */
-    fun deleteSelectedExpenses(expenseIds: List<Int>) {
+    override fun deleteSelectedExpenses(expenseIds: List<Int>) {
         viewModelScope.launch {
             try {
                 sdk.deleteExpenses(expenseIds)
-                loadExpenses() // Refresh the list
+                loadExpensesI() // Refresh the list
             } catch (e: Exception) {
                 _state.value = _state.value.copy(
                     error = "Failed to delete selected expenses: ${e.message}"
@@ -99,7 +106,7 @@ class ExpanseViewModel(private val sdk: SikkaSDK) : ViewModel() {
     }
 
     @OptIn(ExperimentalTime::class)
-    fun addExpense(amount: Double, categoryId: String, description: String) {
+    override fun addExpenseI(amount: Double, categoryId: String, description: String) {
         viewModelScope.launch {
             try {
                 val expense = ExpenseEntity(
@@ -110,7 +117,7 @@ class ExpanseViewModel(private val sdk: SikkaSDK) : ViewModel() {
                     date = Clock.System.now().toEpochMilliseconds(),
                 )
                 sdk.addExpense(expense)
-                loadExpenses() // Refresh list
+                loadExpensesI() // Refresh list
             } catch (e: Exception) {
                 // Handle error
             }
@@ -126,9 +133,3 @@ class ExpanseViewModel(private val sdk: SikkaSDK) : ViewModel() {
 }
 
 
-
-data class ExpenseScreenState(
-    val isLoading: Boolean = false,
-    val expenses: List<ExpenseEntity> = emptyList(),
-    val error: String? = null
-)

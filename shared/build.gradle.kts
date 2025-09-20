@@ -1,3 +1,4 @@
+import org.jetbrains.compose.compose
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
@@ -36,10 +37,17 @@ kotlin {
             implementation(libs.runtime)
             implementation(libs.kotlinx.datetime)
             implementation(libs.koin.core)
+            implementation("org.jetbrains.compose.material:material-icons-core:1.6.11")
+            implementation(libs.androidx.material.icons.extended) // Add this line
         }
         androidMain.dependencies {
             implementation(libs.ktor.client.android)
             implementation(libs.android.driver)
+        }
+        jvmMain.dependencies {
+            implementation(libs.sqldelight.sqlite.driver)
+            implementation(libs.sqldelight.jvm.driver)
+            implementation("org.jetbrains.compose.material:material-icons-extended-desktop:1.6.11")
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)

@@ -9,7 +9,7 @@ import com.prithvi.sikka.network.ExpanseApi
  * This class will be the facade for the Database
  * and SpaceXApi classes.
  */
-class SikkaSDK(databaseDriverFactory: DatabaseDriverFactory, val api: ExpanseApi) {
+class SikkaSDK(databaseDriverFactory: DatabaseDriverFactory, val api: ExpanseApi? = null) {
     private val database = Database(databaseDriverFactory)
 
     /**
@@ -20,9 +20,11 @@ class SikkaSDK(databaseDriverFactory: DatabaseDriverFactory, val api: ExpanseApi
     suspend fun getExpanses(): List<ExpenseEntity> {
         return database.getAllExpanses()
     }
+
     suspend fun updateExpense(expense: ExpenseEntity) {
         database.updateExpense(expense)
     }
+
     suspend fun addExpense(expense: ExpenseEntity) {
         database.insertExpense(expense)
     }

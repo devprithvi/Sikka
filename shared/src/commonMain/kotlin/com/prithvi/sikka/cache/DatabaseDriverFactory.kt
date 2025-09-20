@@ -2,6 +2,6 @@ package com.prithvi.sikka.cache
 
 import app.cash.sqldelight.db.SqlDriver
 
-interface DatabaseDriverFactory {
+expect class DatabaseDriverFactory(context: Any) {
     fun createDriver(): SqlDriver
 }
